@@ -143,34 +143,40 @@ public class practica2_2 extends javax.swing.JFrame {
         if(nombre.isEmpty()){
             javax.swing.JOptionPane.showMessageDialog(this, "No puede estar vacio.", "ERROR", JOptionPane.ERROR_MESSAGE);
             TextoEntrada.setText("");
+            TextoEntrada2.setText("");
             return;
         }
         
         if(nombre.length() < 5){
             javax.swing.JOptionPane.showMessageDialog(this, "Debe tener mas de 5 caractéres.", "ERROR", JOptionPane.ERROR_MESSAGE);
             TextoEntrada.setText("");
+            TextoEntrada2.setText("");
             return;
         }
         
         if(!nombre.matches("[a-zA-Z]+") ){
             javax.swing.JOptionPane.showMessageDialog(this, "Solo puede tener simbolos alfabéticos.", "ERROR", JOptionPane.ERROR_MESSAGE);
             TextoEntrada.setText("");
+            TextoEntrada2.setText("");
             return;
         }
         if(apellido.isEmpty()){
             javax.swing.JOptionPane.showMessageDialog(this, "No puede estar vacio.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            TextoEntrada.setText("");
             TextoEntrada2.setText("");
             return;
         }
         
         if(apellido.length() < 5){
             javax.swing.JOptionPane.showMessageDialog(this, "Debe tener mas de 5 caractéres.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            TextoEntrada.setText("");
             TextoEntrada2.setText("");
             return;
         }
         
         if(!apellido.matches("[a-zA-Z]+")){
-            javax.swing.JOptionPane.showMessageDialog(this, "Solo puede tener simbolos alfabéticos.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this, "Solo puede tener simbolos alfabéticos.(Sin espacios)", "ERROR", JOptionPane.ERROR_MESSAGE);
+            TextoEntrada.setText("");
             TextoEntrada2.setText("");
             return;
         }
