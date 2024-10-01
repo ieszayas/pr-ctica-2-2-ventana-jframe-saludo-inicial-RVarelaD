@@ -59,6 +59,7 @@ public class practica2_2 extends javax.swing.JFrame {
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Saludo");
         setPreferredSize(new java.awt.Dimension(400, 350));
         setResizable(false);
 
@@ -139,49 +140,70 @@ public class practica2_2 extends javax.swing.JFrame {
     private void AceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AceptarActionPerformed
         String nombre = TextoEntrada.getText();
         String apellido = TextoEntrada2.getText();
-        
-        if(nombre.isEmpty()){
-            javax.swing.JOptionPane.showMessageDialog(this, "No puede estar vacio.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            TextoEntrada.setText("");
-            TextoEntrada2.setText("");
+        String nombre_predet = "Introduce su nombre";
+        String apellido_predet = "Introduce su apellido";
+
+        if (nombre.equalsIgnoreCase(nombre_predet)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Introduce un nombre valido.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            TextoEntrada.setText(nombre_predet);
+            TextoEntrada2.setText(apellido_predet);
+            return;
+        }
+
+        if (nombre.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El nombre no puede estar vacio.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            TextoEntrada.setText(nombre_predet);
+            TextoEntrada2.setText(apellido_predet);
+            return;
+        }
+
+        if (nombre.length() < 5) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El nombre debe tener mas de 5 caractéres.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            TextoEntrada.setText(nombre_predet);
+            TextoEntrada2.setText(apellido_predet);
+            return;
+        }
+
+        if (!nombre.matches("[a-zA-Z]+")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El nombre solo puede tener simbolos alfabéticos.(Sin espacios)", "ERROR", JOptionPane.ERROR_MESSAGE);
+            TextoEntrada.setText(nombre_predet);
+            TextoEntrada2.setText(apellido_predet);
             return;
         }
         
-        if(nombre.length() < 5){
-            javax.swing.JOptionPane.showMessageDialog(this, "Debe tener mas de 5 caractéres.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            TextoEntrada.setText("");
-            TextoEntrada2.setText("");
+        if (apellido.equalsIgnoreCase(apellido_predet)) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Introduce un apellido valido.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            TextoEntrada.setText(nombre_predet);
+            TextoEntrada2.setText(apellido_predet);
             return;
         }
         
-        if(!nombre.matches("[a-zA-Z]+") ){
-            javax.swing.JOptionPane.showMessageDialog(this, "Solo puede tener simbolos alfabéticos.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            TextoEntrada.setText("");
-            TextoEntrada2.setText("");
+        if (apellido.isEmpty()) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El apellido no puede estar vacio.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            TextoEntrada.setText(nombre_predet);
+            TextoEntrada2.setText(apellido_predet);
             return;
         }
-        if(apellido.isEmpty()){
-            javax.swing.JOptionPane.showMessageDialog(this, "No puede estar vacio.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            TextoEntrada.setText("");
-            TextoEntrada2.setText("");
+
+        if (apellido.length() < 5) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El apellido debe tener mas de 5 caractéres.", "ERROR", JOptionPane.ERROR_MESSAGE);
+            TextoEntrada.setText(nombre_predet);
+            TextoEntrada2.setText(apellido_predet);
             return;
         }
+
+        if (!apellido.matches("[a-zA-Z]+")) {
+            javax.swing.JOptionPane.showMessageDialog(this, "El apellido solo puede tener simbolos alfabéticos.(Sin espacios)", "ERROR", JOptionPane.ERROR_MESSAGE);
+            TextoEntrada.setText(nombre_predet);
+            TextoEntrada2.setText(apellido_predet);
+            return;
+        }
+
+        JOptionPane.showMessageDialog(this, "Hola " + nombre + " " + apellido + "!", "Saludo", JOptionPane.INFORMATION_MESSAGE);
+
+        TextoEntrada.setText(nombre_predet);
+        TextoEntrada2.setText(apellido_predet);
         
-        if(apellido.length() < 5){
-            javax.swing.JOptionPane.showMessageDialog(this, "Debe tener mas de 5 caractéres.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            TextoEntrada.setText("");
-            TextoEntrada2.setText("");
-            return;
-        }
-        
-        if(!apellido.matches("[a-zA-Z]+")){
-            javax.swing.JOptionPane.showMessageDialog(this, "Solo puede tener simbolos alfabéticos.(Sin espacios)", "ERROR", JOptionPane.ERROR_MESSAGE);
-            TextoEntrada.setText("");
-            TextoEntrada2.setText("");
-            return;
-        }
-        
-        JOptionPane.showMessageDialog(this,"Hola " + nombre + " " + apellido + "!", "Saludo", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void TextoEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextoEntradaActionPerformed
