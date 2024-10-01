@@ -80,6 +80,11 @@ public class practica2_2 extends javax.swing.JFrame {
                 TextoEntrada2ActionPerformed(evt);
             }
         });
+        TextoEntrada2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TextoEntrada2KeyPressed(evt);
+            }
+        });
 
         TextoPredet1.setText("Escriba el nombre y apellido del usuario");
 
@@ -88,6 +93,11 @@ public class practica2_2 extends javax.swing.JFrame {
         TextoEntrada.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 TextoEntradaActionPerformed(evt);
+            }
+        });
+        TextoEntrada.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TextoEntradaKeyPressed(evt);
             }
         });
 
@@ -133,6 +143,11 @@ public class practica2_2 extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void limpiarTextoCaja(String nombre_predet, String apellido_predet) {
+        TextoEntrada.setText(nombre_predet);
+        TextoEntrada2.setText(apellido_predet);
+    }
+
     private void TextoEntrada2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextoEntrada2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextoEntrada2ActionPerformed
@@ -145,70 +160,79 @@ public class practica2_2 extends javax.swing.JFrame {
 
         if (nombre.equalsIgnoreCase(nombre_predet)) {
             javax.swing.JOptionPane.showMessageDialog(this, "Introduce un nombre valido.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            TextoEntrada.setText(nombre_predet);
-            TextoEntrada2.setText(apellido_predet);
+            limpiarTextoCaja(nombre_predet, apellido_predet);
             return;
         }
 
         if (nombre.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "El nombre no puede estar vacio.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            TextoEntrada.setText(nombre_predet);
-            TextoEntrada2.setText(apellido_predet);
+            limpiarTextoCaja(nombre_predet, apellido_predet);
             return;
         }
 
         if (nombre.length() < 5) {
             javax.swing.JOptionPane.showMessageDialog(this, "El nombre debe tener mas de 5 caractéres.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            TextoEntrada.setText(nombre_predet);
-            TextoEntrada2.setText(apellido_predet);
+            limpiarTextoCaja(nombre_predet, apellido_predet);
             return;
         }
 
         if (!nombre.matches("[a-zA-Z]+")) {
             javax.swing.JOptionPane.showMessageDialog(this, "El nombre solo puede tener simbolos alfabéticos.(Sin espacios)", "ERROR", JOptionPane.ERROR_MESSAGE);
-            TextoEntrada.setText(nombre_predet);
-            TextoEntrada2.setText(apellido_predet);
+            limpiarTextoCaja(nombre_predet, apellido_predet);
             return;
         }
-        
+
         if (apellido.equalsIgnoreCase(apellido_predet)) {
             javax.swing.JOptionPane.showMessageDialog(this, "Introduce un apellido valido.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            TextoEntrada.setText(nombre_predet);
-            TextoEntrada2.setText(apellido_predet);
+            limpiarTextoCaja(nombre_predet, apellido_predet);
             return;
         }
-        
+
         if (apellido.isEmpty()) {
             javax.swing.JOptionPane.showMessageDialog(this, "El apellido no puede estar vacio.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            TextoEntrada.setText(nombre_predet);
-            TextoEntrada2.setText(apellido_predet);
+            limpiarTextoCaja(nombre_predet, apellido_predet);
             return;
         }
 
         if (apellido.length() < 5) {
             javax.swing.JOptionPane.showMessageDialog(this, "El apellido debe tener mas de 5 caractéres.", "ERROR", JOptionPane.ERROR_MESSAGE);
-            TextoEntrada.setText(nombre_predet);
-            TextoEntrada2.setText(apellido_predet);
+            limpiarTextoCaja(nombre_predet, apellido_predet);
             return;
         }
 
         if (!apellido.matches("[a-zA-Z]+")) {
             javax.swing.JOptionPane.showMessageDialog(this, "El apellido solo puede tener simbolos alfabéticos.(Sin espacios)", "ERROR", JOptionPane.ERROR_MESSAGE);
-            TextoEntrada.setText(nombre_predet);
-            TextoEntrada2.setText(apellido_predet);
+            limpiarTextoCaja(nombre_predet, apellido_predet);
             return;
         }
 
         JOptionPane.showMessageDialog(this, "Hola " + nombre + " " + apellido + "!", "Saludo", JOptionPane.INFORMATION_MESSAGE);
 
-        TextoEntrada.setText(nombre_predet);
-        TextoEntrada2.setText(apellido_predet);
-        
+        limpiarTextoCaja(nombre_predet, apellido_predet);
+
     }//GEN-LAST:event_AceptarActionPerformed
 
     private void TextoEntradaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextoEntradaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_TextoEntradaActionPerformed
+
+    private void TextoEntradaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextoEntradaKeyPressed
+        String nombre = TextoEntrada.getText();
+        String nombre_predet = "Introduce su nombre";
+        
+        if (nombre.equalsIgnoreCase(nombre_predet)) {
+            TextoEntrada.setText("");
+        }
+    }//GEN-LAST:event_TextoEntradaKeyPressed
+
+    private void TextoEntrada2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TextoEntrada2KeyPressed
+        String apellido = TextoEntrada2.getText();
+        String apellido_predet = "Introduce su apellido";
+        
+        if (apellido.equalsIgnoreCase(apellido_predet)) {
+            TextoEntrada2.setText("");
+        }
+    }//GEN-LAST:event_TextoEntrada2KeyPressed
 
     /**
      * @param args the command line arguments
